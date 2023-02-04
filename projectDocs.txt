@@ -1,0 +1,61 @@
+
+
+***DOCUMENTATION AND EXPLANATION FOR METHODS AND LOGIC BEHIND PIG-GAME PROJECT***
+
+
+1. Adding/removing/toggling class attributes
+
+	example: <section class="player player--0">
+
+	store to single variable: const player0El = document.querySelector(".player--0")
+
+	for adding/manipulating attributes to classes, we use .classList()
+
+		to add: player0El.classList.add('player--active'), 
+			end result behind the scenes =>  class="player player--0 player--active"
+
+		to remove: player0El.classList.remove('player--0'),
+			end result behind the scenes => class= "player"
+
+		to toggle: player0El.classList.toggle('player-active'),
+			if given attribute exists toggle will remove it, if it doesn't it will add the attribute
+
+2. When it comes to id selectors, there are two options to get the value:
+
+	example: <h2 class="name" id="name--1">Player 2</h2>
+
+		a) const player1 = document.querySelector("#name--1");
+		b) const player1 = document.getElementById("name--1");
+
+
+
+3. Every button functionality needs to be initiliazed with addEventListener('someaction', function());
+
+	example: Roll Dice button in project => btnRoll.addEventListener('click', function(){...});
+
+		description of('click', function(){...}) : when user clicks on button, function(){...} will be initiliazied	that specific function is binded to 'click' event.
+
+
+4. Changing dynamically image source:
+	
+	const diceEl = document.querySelector("dice");
+
+	const diceValue = Math.trunc(Math.random() * 6) + 1; will give random numbers 1-6
+
+	diceEl.src = `dice-${diceValue}.png`;
+
+
+5. scores = [0,0]; // accumulative score
+
+	Since we ONLY have TWO players, their aggregate score will bi store in array of TWO indecies.
+	Active player can only be Player 1(index0) or Player 2(index1);
+
+	scores[activePlayer] += currentScore;
+	document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+
+
+
+
+
+
+
